@@ -1,9 +1,11 @@
 package dev.kuhuk.viewpager2_demo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
-
 import dev.kuhuk.viewpager2_demo.transformations.DepthPageTransformer;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,28 +18,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         view_pager = findViewById(R.id.view_pager);
-        viewPager();
+        viewPagerInit();
+        view_pager.setAdapter(new FragmentStateAdapter(this) {
+            @Override
+            public int getItemCount() {
+                return 10;
+            }
 
-        view_pager.setAdapter(new AdapterViewPager(this, view_pager));
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                return new PhotoFragment();
+            }
+        });
     }
 
-    private void viewPager() {
-/*        view_pager.setPageTransformer(new ViewPager2.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                if (position <= -1.0F) {
-                    view_pager.setAlpha(0);
-                } else if (position < 0F) {
-                    view_pager.setAlpha(1);
-                    view_pager.setTranslationX((int) ((float) (view_pager.getWidth()) * -position));
-                } else if (position >= 0F) {
-                    view_pager.setAlpha(1);
-                } else if (position > 1.0F) {
-                    view_pager.setAlpha(0);
-                }
-            }
-        });*/
-
+    private void viewPagerInit() {
         view_pager.setPageTransformer(new DepthPageTransformer());
         view_pager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
         view_pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

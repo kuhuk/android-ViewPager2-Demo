@@ -1,33 +1,23 @@
 package dev.kuhuk.viewpager2_demo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import java.util.List;
 
 public class AdapterViewPager extends RecyclerView.Adapter<AdapterViewPager.MyViewHolder> {
 
     private LayoutInflater mInflater;
-    private ViewPager2 view_pager;
 
     private int[] colorArray = new int[]{android.R.color.holo_orange_light, android.R.color.holo_green_light,
             android.R.color.holo_orange_dark, android.R.color.holo_purple
     };
 
-    AdapterViewPager(Context context, ViewPager2 view_pager) {
+    AdapterViewPager(Context context) {
         this.mInflater = LayoutInflater.from(context);
-        this.view_pager = view_pager;
     }
 
     @NonNull

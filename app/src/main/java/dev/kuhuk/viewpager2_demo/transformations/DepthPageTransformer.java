@@ -2,13 +2,14 @@ package dev.kuhuk.viewpager2_demo.transformations;
 
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.viewpager2.widget.ViewPager2;
 
 public class DepthPageTransformer implements ViewPager2.PageTransformer {
     private static final float MIN_SCALE = 0.75f;
 
-    public void transformPage(View view, float position) {
-        int pageWidth = view.getWidth();
+    public void transformPage(@NonNull View view, float position) {
         int pageHeight = view.getHeight();
 
         if (position < -1) { // [-Infinity,-1)

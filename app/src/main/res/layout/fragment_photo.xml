@@ -19,5 +19,4 @@
         android:src="@drawable/pic_1"
         android:scaleType="center"
         tools:ignore="ContentDescription" />
-
 </LinearLayout>
